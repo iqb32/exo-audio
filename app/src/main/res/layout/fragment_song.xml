@@ -6,60 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvSongName"
-        android:layout_width="0dp"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SONG NAME"
-        android:gravity="center"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/ivSongImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkBackground"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme">
+
+            <TextView
+                style="@style/Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/app_name"
+                android:textSize="20sp" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView
         android:id="@+id/ivSongImage"
         android:layout_width="300dp"
         android:layout_height="300dp"
+        android:layout_marginTop="32dp"
         android:background="@color/darkBackground"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSongName" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvCurTime"
-        android:layout_width="50dp"
+        android:id="@+id/tvSongName"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:gravity="center"
-        android:text="00:00"
-        android:layout_marginStart="16dp"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/seekBar"
+        android:text="SONG NAME"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/ivSongImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/seekBar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_width="0dp"
         android:layout_height="18dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivPlayPauseDetail"
         app:layout_constraintEnd_toStartOf="@+id/tvSongDuration"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tvCurTime"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvSongDuration"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="00:00"
-        android:layout_marginEnd="16dp"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/seekBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/seekBar" />
+        app:layout_constraintTop_toBottomOf="@+id/ivSongImage" />
 
     <ImageView
         android:id="@+id/ivPlayPauseDetail"
@@ -68,10 +79,35 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/circle_drawable"
         android:src="@drawable/ic_play"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvCurTime"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:gravity="center"
+        android:text="00:00"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/seekBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seekBar" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvSongDuration"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:text="00:00"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/seekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seekBar" />
 
     <ImageView
         android:id="@+id/ivSkipPrevious"
@@ -92,19 +128,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/ivPlayPauseDetail"
         app:layout_constraintStart_toEndOf="@+id/ivPlayPauseDetail"
         app:layout_constraintTop_toTopOf="@+id/ivPlayPauseDetail" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
